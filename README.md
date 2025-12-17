@@ -3,7 +3,7 @@
 A Streamlit-powered AI assistant designed to answer questions about regulations and services related to activities and events in archaeological sites and museums in Egypt.
 The system uses a Retrieval-Augmented Generation (RAG) architecture to provide accurate, context-aware answers from official documents.
 
-#✨ Features
+## ✨ Features
 
 Domain-Specific Knowledge
 Answers questions using a curated knowledge base of regulations and fees for:
@@ -30,12 +30,16 @@ Fully supports Arabic text, including long regulatory content.
 
 Streamlit UI
 Simple and interactive chat interface for asking questions and viewing responses.
-📦 Requirements
+
+## 📦 Requirements
 Environment Variables
 
 Create a .env file in the project root:
 
 GOOGLE_API_KEY=your_gemini_api_key_here
+
+TAVILY_API_KEY=your_tavily_api_key_here
+
 
 
 Used for embeddings and LLM generation.
@@ -46,32 +50,34 @@ Install required packages:
 
 pip install -r requirements.txt
 
-📚 Data Format
+## 📚 Data Format
 
 The system uses a custom knowledge base stored in:
 
 docs.json
 
-✅ Data Structure
+## ✅ Data Structure
 
 The file must be a standard JSON array (not JSONL), where each element represents one document page:
-
+```
 [
   {
+  
     "document_title": "...",
     "document_type": "...",
     "page_number": 1,
-    "category": "...",
+    "category": "...",  
     "page_content": "..."
+    
   }
 ]
-
+```
 
 page_content → Main text used for retrieval and answering
 
 Other fields → Stored as metadata to improve context and traceability
 
-🛠️ Setup & Run
+## 🛠️ Setup & Run
 
 Install dependencies
 
@@ -93,7 +99,7 @@ Open in browser
 
 http://localhost:8501
 
-🧠 Architecture Overview
+## 🧠 Architecture Overview
 
 Load Documents
 
@@ -117,21 +123,19 @@ Retrieved context + user question → LLM
 
 Model generates a grounded, contextual answer
 
-🗂️ Project Structure
-
+## 🗂️ Project Structure
+```
 ├── main.py                 # Main Streamlit application
-
 ├── docs.json               # Regulations & fees dataset (JSON array)
-
 ├── .env                    # API keys (not tracked)
-
 ├── chroma_langchain_db/    # Vector database (auto-generated)
-
 ├── requirements.txt        # Python dependencies
-
 └── README.md               # Project documentation
+```
 
-🎯 Use Cases
+
+
+# 🎯 Use Cases
 
 Asking about fees for events and activities
 
